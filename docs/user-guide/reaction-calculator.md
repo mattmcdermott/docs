@@ -1,19 +1,7 @@
 # Reaction Calculator
 Welcome to the Reaction Calculator wiki!  
-  
-You will find in here all relevant information regarding the Reaction Calculator, including release notes, the manual, etc.
-## Release Notes
 
-### Version 0.3 - May 13, 2011
-  * Ability to select a particular crystal structure for the reaction via structureid
-
-### Version 0.2 - Mar 31, 2011 
-  * Ability to select between three different energy adjustment strategies via a slider
-
-### Version 0.1 - Mar 6, 2011 
-  * Initial release
-
-## Manual
+## User Manual
 ### Overview
 The reaction calculator allows users to estimate tens of thousands solid-state reaction enthalpies from a database of density functional theory calculations. In addition, the reaction calculator reports known experimental enthalpies (at 298 K and 1 atm) where available.
 

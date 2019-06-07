@@ -1,82 +1,62 @@
 # Phase Diagram App
-Welcome to the Phase Diagram App Reference!
 
-Here you will find all relevant information regarding the Phase Diagram App (PDApp), including release notes, the manual, etc.
-
-## Release Notes
-### **Recent changes**
-### Version 0.3 - May 2, 2011
-* Bug fixes for tabbing behavior, and unstable phase listing.
-* New scroll layout for Data Tables for easier viewing.
-### Version 0.2 - March 28, 2011
-* New tabbed formatting for PDApp which supports up to 7 PDs.
-### Version 0.1 - March 10, 2011
-* Initial release of Phase Diagram App
-* Key features:
-    * 2-4 compositional components phase diagrams supported.
-    * Highlighting of nodes on mouse-over.
-    * Marking of an arbitrary composition in the phase diagram.
-    * Mouse-over popup of details at particular nodes.
-    * Complete data table with listing of stable and unstable phases.
-
-## Manual
-
+## User Manual
 ### **Introduction** 
 Phase diagrams represent the thermodynamic phase equilibria of multicomponent systems and reveal useful insights into fundamental material aspects regarding the processing and reactions of materials. However, the experimental determination of a phase diagram is an extremely time-consuming process, requiring careful synthesis and characterization of all phases in a chemical system.
 
-Computational tools can accelerate phase diagram construction significantly. By calculating the energies of all known compounds in a given chemical system (e.g. $\ce{Li-Fe-O}$), we can determine the phase diagram for that system at 0 K and 0 atm. Furthermore, for systems comprised of predominantly solid phases open with respect to a gaseous element, approximations can be made as to the finite temperature and pressure phase diagrams.
+Computational tools can accelerate phase diagram construction significantly. By calculating the energies of all known compounds in a given chemical system (e.g. $\ce{Li-Fe-O}$), we can determine the phase diagram for that system at zero temperature and zero pressure. Furthermore, for systems comprised of predominantly solid phases open with respect to a gaseous element, we can approximate finite temperature and pressure phase diagrams for this system.
 
-In this manual, we will outline the general usage and thermodynamics methodology of our computational phase diagrams app. The details of the calculations, including computational methodology and accuracy, used in constructing these phase diagrams are available in the [Calculations Manual](/methodology/total-energies) and will not be further covered in this manual.
+In this manual, we will outline the general usage and thermodynamics methodology of our computational Phase Diagram App. The details of the calculations, including computational methodology and accuracy, used in constructing these phase diagrams are available in the [Calculations Manual](/methodology/total-energies) and will not be further covered in this manual.
 
 ### **Using the Computational Phase Diagram App**
-To construct the phase diagram of a 2-4 component chemical system (e.g. $\ce{Li-Fe-O}$), you only need to select the desired elements from the periodic table and click the "Generate" button.
+The Phase Diagram App currently allows for the construction of a phase diagram containing 2-4 components. These components can be elements or compounds (e.g. $\ce{Fe, Li_2O}$). For example, to construct the phase diagram of the $\ce{Li-Fe-O}$ chemical system, you can select these three elements from the periodic table and click the "Generate" button. Alternatively, you can enter the elements of the chemical system separated by either spaces or dashes ($\ce{Li-Fe-O}$ or just $\ce{Li Fe O}$). 
 
-To generate a grand potential phase diagram, for which one of the components of the phase diagram is considered 'open' to the system, select a projected element from the drop-down list, and input a desired chemical potential either manually or using the temperature slider (for supported elements $\ce{O2}$, $\ce{N2}$, $\ce{H2}$, $\ce{F2}$, and $\ce{Cl2}$ only). When available, the temperature slider has been calibrated using entropy data from NIST. [^1]
+For chemical systems with 3-4 elements, one can generate a grand potential phase diagram for which one of the components of the phase diagram is considered "open" to the system. To create a grand potential phase diagram, select an element to keep open from the pop-up list of elements. Then set a desired chemical potential, $\mu$, for this element using the slider. Note that the chemical potential slider automatically snaps to chemical potential regions; the boundaries of each of these regions denote critical transition chemical potentials at which the phase diagram changes.
 
 Once the phase diagram has been generated, there are multiple ways to interact with the data:
 
-* When mousing over nodes in the phase diagram, a pop-up appears that identifies the phase. The pop-up lists both stable and unstable crystal structures computed at that composition. You may click the id link to bring up more details of that compound, such as detailed crystal structure information.
-* Checking the 'Show Unstable' box will display the compositions at which unstable compounds have been computed as blue circles.
+* When mousing over nodes in the phase diagram, a pop-up appears that identifies the phase. The pop-up lists both stable and unstable crystal structures (polymorphs) computed at that composition. You can click the ID link to open that material's detail page in a new window. 
+* Checking the "Show Unstable" box will display blue circles for all compositions at which unstable compounds have been computed.
+* An arbitrary composition can be specified and plotted as a red dot. This composition will thermodynamically decompose to stable phases (shown as dark nodes), with the relative proportion of each stable phase determined by the lever rule.
 * You can zoom into a portion of the phase diagram by defining a zoom area: click and hold at the upper-left corner of the desired area, and drag down and right, releasing the mouse at the lower-right corner of the desired area. A pop-up with the zoomed-in portion should appear. To return to the original phase diagram, click anywhere outside the pop-up.
 
 ### **Interpreting Phase Diagrams**
-This section provides a short guide on interpreting phase diagrams generated by the PDApp. A more comprehensive discussion and example of phase diagram interpretation can be found in References 2 and 3.[^2][^3]
-#### Basic Phase Diagram Information
-While the PDApp generates several types of phase diagrams, some information is common to all phase diagrams. As an illustrative example, we refer to *Figure 1*, a ternary $\ce{Li-Fe-O}$ phase diagram at 0 K and 0 atm calculated using the PDApp.
-
-![Calculated Li-Fe-O Phase Diagram](/img/phase-diagram/Li-Fe-O_calculated.png "Calculated Li-Fe-O Phase Diagram")
-
-*Figure 1: Calculated Li-Fe-O Phase Diagram*
-
-Several pieces of information can be obtained from *Figure 1*:
-
-* The red nodes on the phase diagram represent phases that are calculated to be stable under the given conditions.
-* Blue circles (not shown) represent phases that are calculated to be unstable under the given conditions.
-* An arbitrary composition will thermodynamically decompose to stable phases (red nodes), with the relative proportion of each stable phase determined by the lever rule.
-
-Regarding polymorphic compounds (compounds that change crystal structure with respect to temperature or pressure), only limited information can be obtained because phase diagrams generated by the PDApp do not include an explicit temperature axis. For most solid materials, our experience indicates that temperature and pressure contribute fairly small changes to differences in total energy. Thus, we expect that crystal structures for which the PDApp reports similar formation energies (i.e., within about 50 meV/atom) might be candidates for polymorphism.
-
-The PDApp models only the thermodynamics of a system. Thus, compounds that are metastable (kinetically stabilized) may not show up as stable on the generated phase diagram. We expect that compounds for which the decomposition energy into stable phases is low are potential candidates for metastability; however, compounds with extremely high decomposition energies into stable phases (i.e., over about 200 meV/atom) are less likely to be metastable. The thermodynamic scale of inorganic crystalline metastability is discussed in Reference 4. [^4]
+This section provides a short guide on interpreting phase diagrams generated by the app. A more comprehensive discussion and example of phase diagram interpretation can be found in the References. [^1][^2]
 
 #### Compositional Phase Diagrams
 In a compositional phase diagram, the system is closed with respect to the environment. We display compositional phase diagrams involving different numbers of components in slightly different ways.
 
 ##### Binary Compositional Phase Diagrams
-*Figure 2* is an example of a calculated binary $\ce{Fe-P}$ phase diagram at 0 K and 0 atm using the PDApp. Binary phase diagrams show the complete convex hull for the system, where the y-axis is the formation energy per atom and the x-axis is the composition (e.g. in the $\ce{Fe-P}$ phase diagram, the x-axis is the fraction of $\ce{P}$).
+*Figure 2* is an example of a calculated binary $\ce{Fe-P}$ phase diagram at 0 K and 0 atm using the app. Binary phase diagrams show the complete convex hull of energy for the system, where the y-axis is the formation energy per atom and the x-axis is the composition (e.g. in the $\ce{Fe-P}$ phase diagram, the x-axis is the mole fraction of $\ce{P}$).
 
-![Calculated Fe-P Phase Diagram](/img/phase-diagram/Fe-P_calculated.png "Calculated Fe-P Phase Diagram")
+<center>![Calculated Fe-P Phase Diagram](/img/phase-diagram/Fe-P_calculated2.png "Calculated Fe-P Phase Diagram")
 
-*Figure 2: Calculated Fe-P Phase Diagram*
+*Figure 2: Calculated Fe-P Phase Diagram*</center>
 
-The black lines show the convex hull construction, which connects stable phases. Unstable phases will always appear above the convex hull line; one measure of the thermodynamic stability of an arbitrary compound is its distance from the convex hull line, which predicts the decomposition energy of that phase into the most stable phases.
+The convex hull construction determines which phases are predicted to be chemically stable. These stable entries are shown as dark circles connected by lines, which outline the shape of the convex hull. Unstable phases will always appear above the hull; the distance of these phases from the convex hull line is known as the "energy above hull", which predicts the decomposition energy of that phase into a combination of the nearest stable phases.
 
 ##### Ternary Compositional Phase Diagrams
-*Figure 1* is an example of a calculated ternary $\ce{Li-Fe-O}$ phase diagram at 0 K and 0 atm using the PDApp. The presentation of ternary phase diagrams differs from that of binary phase diagrams; the energy axis is removed so that the entire compositional space can be represented. (The energy axis, not shown, can be thought of as coming 'out of the page').
+*Figure 1* is an example of a calculated ternary $\ce{Fe-Al-O}$ phase diagram at 0 K and 0 atm using the Phase Diagram App. The presentation of ternary phase diagrams differs from that of binary phase diagrams; the energy axis is removed so that the entire compositional space can be represented. 
 
-The black lines in the ternary phase diagrams are projections of the convex hull construction into compositional space. The lines form Gibbs triangles, which can be used to find stable phases at an arbitrary composition. At any point in the phase diagram other than the stable nodes, the equilibrium phases are given by vertices of the triangle bounding that composition. For example, the equilibrium phases for a composition with $\ce{Li:Fe:O}$ ratio of 1:1:1 (i.e., in the center of the phase diagram), is predicted to be $\ce{Li5FeO4}$, $\ce{LiFeO2}$ and $\ce{Fe}$.
+<center>![2D Calculated Li-Fe-O Phase Diagram](/img/phase-diagram/Fe-Al-O_2D.png "2D Calculated Li-Fe-O Phase Diagram")
+
+*Figure 3: Two-dimensional calculated Li-Fe-O Phase Diagram from Phase Diagram App*</center>
+
+The energy axis, not shown, can be thought of as coming "out of the page". Reference 4 illustrates what a ternary phase diagram with an energy axis would look -- note that this requires plotting in three dimensions.
+
+<center>![3DCalculated Fe-Al-O Phase Diagram](/img/phase-diagram/Fe-Al-O_3D.png "3D CalculatedFe-Al-O Phase Diagram")
+
+*Figure 4: Example three-dimensional calculated Fe-Al-O phase Diagram from Reference 4 [^4]*</center>
+
+Thus the ternary phase diagrams generated by the Phase Diagram App can be thought of as two-dimensional projections of the three-dimensional diagram depicted above. 
+This means that the lines in the ternary phase diagrams are projections of the convex hull construction into compositional space. These lines form Gibbs triangles, which can be used to find stable phases at an arbitrary composition. At any point in the phase diagram other than the stable nodes, the equilibrium phases are given by vertices of the triangle bounding that composition. For example, the equilibrium phases for a composition with $\ce{Li:Fe:O}$ ratio of 1:1:1 (i.e., in the center of the phase diagram in Figure 1), is predicted to be $\ce{Li5FeO4}$, $\ce{LiFeO2}$ and $\ce{Fe}$.
 
 ##### Quaternary Compositional Phase Diagrams
-Quaternary phase diagrams are presented in the same general way as ternary phase diagrams, but an additional axis is needed to represent the fourth composition. Therefore, quaternary phase diagrams are shown in three dimensions rather than as a 2D plot.
+Quaternary phase diagrams are presented in the same general way as ternary phase diagrams, but an additional axis is needed to represent the fourth composition. Therefore, quaternary phase diagrams are shown in three dimensions rather than as a 2D plot. An example of a quaternary phase diagram for the $\ce{Li-Fe-P-O}$ system is shown in Figure 5. Note that in the near future, we will be adding the ability to interactively rotate/zoom with quaternary phase diagrams.
+
+<center>![Calculated Li-Fe-P-O Phase Diagram](/img/phase-diagram/Li-Fe-P-O_example.png "Calculated Li-Fe-P-O Phase Diagram")
+
+*Figure 5: Calculated Li-Fe-P-O Phase Diagram*</center>
 
 The lines in quaternary phase diagrams define polyhedra with 4 vertices each rather than triangles. At any point in the phase diagram other than the stable nodes, the equilibrium phases are given by the vertices of the polyhedron bounding that composition.
 
@@ -85,17 +65,21 @@ Grand potential phase diagrams are phase diagrams representing phase equilibria 
 
 A grand potential phase diagram involving n components is presented in the same way as a compositional phase diagram involving $n-1$ components.
 
-![Calculated Li-Fe-O Grand Potential Phase Diagram](/img/phase-diagram/Li-Fe-O_700K.png "Calculated Li-Fe-O Grand Potential Phase Diagram")
+<center>![Calculated Li-Fe-O Grand Potential Phase Diagram](/img/phase-diagram/Li-Fe-O_700K.png "Calculated Li-Fe-O Grand Potential Phase Diagram")
 
-*Figure 3: Calculated Li-Fe-O grand potential phase diagram at oxygen chemical potential consistent with approximately 700 K and 0 atm.*
+*Figure 3: Calculated Li-Fe-O grand potential phase diagram at oxygen chemical potential consistent with approximately 700 K and 0 atm.*</center>
 
 *Figure 3* shows the calculated grand potential phase diagram for the $\ce{Li-Fe-O}$ system at an oxygen chemical potential consistent with 700 K and 0 atm. The phase diagram provides information on the equilibrium phases under these conditions for any $\ce{Li:Fe}$ composition (note that the O fraction is controlled by interactions with the environment). For example, we may observe that a compositon with a relatively high Fe ratio (near composition = 1) will comprise $\ce{Fe2O3}$ and $\ce{LiFeO2}$. In addition, by examining the changes in the equilibrium phases as the chemical potential changes, we can obtain insights into how the phase equilibria are modified with changes in the chemical potential. A detailed discussion of this application can be found in References 2 and 3. [^2][^3]
 
+Regarding polymorphic compounds (compounds that change crystal structure with respect to thermodynamic handles such as temperature or pressure), only limited information can be obtained because phase diagrams generated by the Phase Diagram App do not include explicit axes for these handles. However, for most solid materials, our experience indicates that temperature and pressure contribute fairly small changes to differences in total energy. Thus, we expect that crystal structures for which the app reports similar formation energies (i.e., within about 50 meV/atom) might be candidates for polymorphism.
+
+The Phase Diagram App models only the thermodynamics of a system. Thus, compounds that are metastable (kinetically stabilized) may not show up as stable on the generated phase diagram. As a general rule of thumb, we expect that compounds for which the decomposition energy into stable phases ("energy above hull") is low are potential candidates for metastability, whereas compounds with extremely high energies above hull (i.e. over about 200 meV/atom) are less likely to be metastable. These statements are general rules of thumb, but not necessarily applicable to all predicted metastable polymorphs. This is further explored in Reference 3, which discusses the hermodynamic scale of inorganic crystalline metastability. [^3]
+
 ### **Accuracy of Calculated Phase Diagrams**
 
-![Experimental Li-Fe-O Phase Diagram](/img/phase-diagram/Li-Fe-O_exp.png "Experimental Li-Fe-O Phase Diagram")
+<center>![Experimental Li-Fe-O Phase Diagram](/img/phase-diagram/Li-Fe-O_exp.png "Experimental Li-Fe-O Phase Diagram")
 
-*Figure 4: Experimental Li-Fe-O Phase Diagram*
+*Figure 4: Experimental Li-Fe-O Phase Diagram*</center>
 
 *Figure 4* shows the experimentally determined phase diagram for the $\ce{Li-Fe-O}$ system at 673K.[^5] Even though the experimental phase diagram is at a much higher temperature, we can see that our calculated phase diagram reproduces the features very well. The phases $\ce{Li2O}$, $\ce{Fe3O4}$, $\ce{Fe2O3}$, $\ce{LiFeO2}$, $\ce{Li5FeO4}$ are stable in both the experimental diagram and our calculated phase diagram. The only additional phase in our calculated diagram is $\ce{FeO}$, which is well known to be difficult to obtain in stoichiometric proportion under normal conditions. Our calculations correctly reproduce the $\ce{FeO}$ formation enthalpy to within experimental accuracy, and our calculated phase diagram is fullly consistent with known experimental thermochemical data along the $\ce{Fe-O}$ line at 1 atm and 298K.
 
@@ -141,24 +125,20 @@ Using the above assumption, the effect of temperature and partial pressure can b
 ### **Citation**
 To cite the Computational Phase Diagram App, please reference the following works:
 
-* S. P. Ong, L. Wang, B. Kang, G. Ceder., The Li-Fe-P-O2 Phase Diagram from First Principles Calculations, Chemistry of Materials, vol. 20, Mar. 2008, pp. 1798-1807.
-* S.P. Ong, A. Jain, G. Hautier, B. Kang, and G. Ceder, Thermal stabilities of delithiated olivine MPO4 (M=Fe, Mn) cathodes investigated using first principles calculations, Electrochemistry Communications, vol. 12, 2010, pp. 427-430.
-
+* [S. P. Ong, L. Wang, B. Kang, G. Ceder., The Li-Fe-P-O2 Phase Diagram from First Principles Calculations, Chemistry of Materials, vol. 20, Mar. 2008, pp. 1798-1807.](https://doi.org/10.1021/cm702327g)
+* [S.P. Ong, A. Jain, G. Hautier, B. Kang, and G. Ceder, Thermal stabilities of delithiated olivine MPO4 (M=Fe, Mn) cathodes investigated using first principles calculations, Electrochemistry Communications, vol. 12, 2010, pp. 427-430](https://doi.org/10.1016/j.elecom.2010.01.010).
 
 ### **Authors**
 - Shyue Ping Ong
 - Anubhav Jain
 - Matthew McDermott
 
-## Release Roadmap
-
 ## Other Resources
 
 ## References
 
-[^1]: https://doi.org/10.1021/je000236i
-[^2]: https://doi.org/10.1021/cm702327g
-[^3]: https://doi.org/10.1016/j.elecom.2010.01.010
-[^4]: https://doi.org/10.1126/sciadv.1600225
-[^5]: V. Raghavan, Fe-Li-O Phase Diagram, ASM Alloy Phase Diagrams Center, P. Villars, editor-in-chief; H. Okamoto and K. Cenzual, section editors; http://www1.asminternational.org/AsmEnterprise/APD, ASM International, Materials Park, OH, 2006.
-[^6]: https://dx.doi.org/10.1145/235815.235821
+[^1]: <https://doi.org/10.1021/cm702327g>
+[^2]: <https://doi.org/10.1016/j.elecom.2010.01.010>
+[^3]: <https://doi.org/10.1126/sciadv.1600225>
+[^4]: V. Raghavan, Fe-Li-O Phase Diagram, ASM Alloy Phase Diagrams Center, P. Villars, editor-in-chief; H. Okamoto and K. Cenzual, section editors; http://www1.asminternational.org/AsmEnterprise/APD, ASM International, Materials Park, OH, 2006.
+[^5]: <https://dx.doi.org/10.1145/235815.235821>
